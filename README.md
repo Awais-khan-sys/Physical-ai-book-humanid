@@ -397,10 +397,10 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ## Links
 
-- **Live Demo**: [your-demo-url.vercel.app]
-- **GitHub**: [github.com/your-username/physical-ai-textbook]
-- **Demo Video**: [youtube.com/watch?v=...]
+- **GitHub**: https://github.com/Awais-khan-sys/Physical-ai-book-humanid
+- **Live Demo**: Deploy following [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md)
+- **Demo Video**: Coming soon
 
 ---
 
-**Built with Claude Code for [Hackathon Name] • 2024**
+**Built with Claude Code for Hackathon • 2024**
