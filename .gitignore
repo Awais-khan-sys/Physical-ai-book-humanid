@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Build outputs
+frontend/build/
+frontend/.docusaurus/
+frontend/.cache/
+dist/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+.pytest_cache/
+.coverage
+*.egg-info/

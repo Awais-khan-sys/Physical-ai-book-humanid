@@ -1,0 +1,405 @@
+/**
+ * Custom CSS for Physical AI Textbook
+ * Dark-neutral gradient theme with motion-first interactions
+ * Inspiration: Vercel Docs + Linear.app motion quality
+ */
+
+:root {
+  /* Dark-neutral gradient colors */
+  --color-charcoal: #1a1d23;
+  --color-slate: #2d3139;
+  --color-slate-light: #3d424d;
+
+  /* Electric cyan / soft neon blue accent */
+  --color-accent-primary: #00d9ff;
+  --color-accent-glow: rgba(0, 217, 255, 0.3);
+  --color-accent-dim: #0099cc;
+
+  /* Typography */
+  --color-text-primary: #e8eaed;
+  --color-text-secondary: #9aa0a6;
+  --color-text-muted: #6b7280;
+
+  /* Glass panel effects */
+  --glass-bg: rgba(45, 49, 57, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px var(--color-accent-glow);
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* Transitions */
+  --transition-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Docusaurus overrides */
+  --ifm-color-primary: var(--color-accent-primary);
+  --ifm-background-color: var(--color-charcoal);
+  --ifm-background-surface-color: var(--color-slate);
+  --ifm-font-color-base: var(--color-text-primary);
+  --ifm-heading-color: var(--color-text-primary);
+  --ifm-link-color: var(--color-accent-primary);
+  --ifm-code-background: var(--color-slate-light);
+  --ifm-navbar-background-color: var(--color-charcoal);
+  --ifm-footer-background-color: var(--color-charcoal);
+
+  /* Typography */
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --ifm-heading-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.7;
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-slate) 100%);
+  font-family: var(--ifm-font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography-first design */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+p {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* Links with smooth transitions */
+a {
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-dim);
+  text-decoration: none;
+}
+
+/* Navbar with glass effect */
+.navbar {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.navbar__title {
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--color-text-primary) 0%, var(--color-accent-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Main content container */
+.main-wrapper {
+  background: transparent;
+}
+
+.docMainContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-Main-styles-module,
+.docMainContainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Content cards with soft glass panels */
+article {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  margin: 2rem 0;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+article:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* CTA Buttons with glow pulse */
+.button {
+  background: linear-gradient(135deg, var(--color-accent-primary) 0%, var(--color-accent-dim) 100%);
+  color: var(--color-charcoal);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width var(--transition-base), height var(--transition-base);
+}
+
+.button:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-glow);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.button:active::before {
+  width: 300px;
+  height: 300px;
+  transition: width var(--transition-fast), height var(--transition-fast);
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--color-accent-glow);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--color-accent-glow), 0 0 40px var(--color-accent-glow);
+  }
+}
+
+/* Card hover effects with lift + shadow bloom */
+.card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 217, 255, 0.15);
+  border-color: var(--color-accent-primary);
+}
+
+/* Sidebar with smooth transitions */
+.sidebar {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid var(--glass-border);
+}
+
+.menu__link {
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.menu__link:hover {
+  background: var(--color-slate-light);
+  color: var(--color-accent-primary);
+}
+
+.menu__link--active {
+  background: var(--color-accent-primary);
+  color: var(--color-charcoal);
+  font-weight: 600;
+}
+
+/* Code blocks */
+code {
+  background: var(--color-slate-light);
+  border-radius: var(--radius-sm);
+  padding: 0.2em 0.4em;
+  font-size: 0.9em;
+}
+
+pre {
+  background: var(--color-slate-light);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+th {
+  background: var(--color-slate-light);
+  color: var(--color-accent-primary);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--color-accent-primary);
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+tr:hover {
+  background: var(--color-slate-light);
+}
+
+/* Page transitions: fade + slight vertical motion */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+/* Floating chatbot button with breathing animation */
+.chatbot-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, var(--color-accent-primary) 0%, var(--color-accent-dim) 100%);
+  border-radius: 50%;
+  border: none;
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  cursor: pointer;
+  z-index: 1000;
+  transition: all var(--transition-base);
+  animation: breathe 2.5s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-charcoal);
+  font-size: 24px;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.chatbot-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 40px rgba(0, 217, 255, 0.4);
+  animation: none;
+}
+
+.chatbot-button:active {
+  transform: scale(0.95);
+}
+
+/* Chatbot modal */
+.chatbot-modal {
+  position: fixed;
+  bottom: 6rem;
+  right: 2rem;
+  width: 400px;
+  max-height: 600px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  pointer-events: none;
+  transition: all var(--transition-base);
+}
+
+.chatbot-modal.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  article {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .chatbot-modal {
+    width: calc(100vw - 2rem);
+    right: 1rem;
+    bottom: 5rem;
+  }
+
+  .chatbot-button {
+    bottom: 1rem;
+    right: 1rem;
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-slate);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent-dim);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-primary);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-accent-primary);
+  color: var(--color-charcoal);
+}
